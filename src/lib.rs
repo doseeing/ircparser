@@ -172,7 +172,7 @@ pub fn parse(text: &str) -> ParseResult<VecDeque<Line>> {
         }
 
         // Parse source component.
-        if line.chars().nth(idx).unwrap() == ':' {
+        if line.find(':') == Some(idx) {
             let end_idx = find_index(line, ' ', idx).unwrap();
             source = Some(line[idx..end_idx].to_string());
             idx = end_idx + 1;
